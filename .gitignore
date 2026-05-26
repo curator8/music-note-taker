@@ -22,6 +22,7 @@ pnpm-debug.log*
 # Local environment files
 .env
 .env.*
+backend-fastapi/.env
 *.local
 
 # Local media and generated assets

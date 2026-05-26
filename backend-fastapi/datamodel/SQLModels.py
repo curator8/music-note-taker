@@ -1,6 +1,7 @@
 from datetime import datetime
 from sqlmodel import Field, Session, SQLModel, create_engine, select, text
 from typing import Optional
+from config import DATABASE_URL
 
 
 # create users model that'll grab just one user for the profile
@@ -26,19 +27,7 @@ class Video(SQLModel, table=True):
 
 
 def connect_music_db(): 
-    # extract this away later one 
-    database_name = "music_app_db"
-    port = "5432"
-    username = "joel_music_db"
-    address = "localhost" 
-    password = "music_password" 
-    database_url = (
-        f"postgresql+psycopg2://{username}:{password}"
-        f"@{address}:{port}/{database_name}"
-    )
-
-    # create 
-    return create_engine(database_url)
+    return create_engine(DATABASE_URL)
 
 
 # def get_user():
