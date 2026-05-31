@@ -3,11 +3,20 @@ import { Video } from "./Video.tsx";
 
 // import "./App.css";
 
+interface LessonVideo {
+  video_id: number;
+  title: string;
+  file_path: string;
+}
+
+const API_BASE_URL =
+  import.meta.env.VITE_API_BASE_URL ?? "http://127.0.0.1:8000";
+
 function App() {
-  const [videos, setVideos] = useState([]);
+  const [videos, setVideos] = useState<LessonVideo[]>([]);
 
   useEffect(() => {
-    fetch("http://127.0.0.1:8000/users/1/videos")
+    fetch(`${API_BASE_URL}/users/1/videos`)
       .then((response) => {
         return response.json();
       })
@@ -20,8 +29,13 @@ function App() {
 
   return (
     <>
-      
-      <Video />
+      {videos.map((video) => (
+        <Video
+          key={video.video_id}
+          propTitle={video.title}
+          propFilePath={video.file_path}
+        />
+      ))}
     </>
   );
 }
