@@ -7,6 +7,7 @@ interface LessonVideo {
   video_id: number;
   title: string;
   file_path: string;
+  description?: string | null;
 }
 
 const API_BASE_URL =
@@ -34,6 +35,7 @@ function App() {
           key={video.video_id}
           propTitle={video.title}
           propFilePath={video.file_path}
+          propDescription={video.description}
         />
       ))}
     </>

@@ -28,6 +28,7 @@ CREATE TABLE auth.videos (
 	user_id INTEGER REFERENCES auth.users(user_id),
 	title VARCHAR(255) NOT NULL,
 	file_path TEXT NOT NULL,
+	description TEXT,
 	create_dt TIMESTAMP DEFAULT CURRENT_TIMESTAMP
 );
 

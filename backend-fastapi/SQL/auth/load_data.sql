@@ -90,16 +90,19 @@ VALUES
 INSERT INTO auth.videos (
     user_id,
     title,
-    file_path
+    file_path,
+    description
 )
 VALUES
 (
     1,
     'Music Lesson Video 1',
-    '/video/IMG_5198.mp4'
+    '/video/IMG_5198.mp4',
+    'Practice recording description not available yet.'
 ),
 (
     1,
     'Music Lesson Video 2',
-    '/video/IMG_5199.mp4'
+    '/video/IMG_5199.mp4',
+    'Practice recording description not available yet.'
 );

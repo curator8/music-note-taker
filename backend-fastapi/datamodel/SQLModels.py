@@ -21,6 +21,7 @@ class Video(SQLModel, table=True):
     user_id: int = Field(foreign_key="auth.users.user_id")
     title: str
     file_path: str
+    description: Optional[str] = None
     create_dt: Optional[datetime] = None
 
 
@@ -52,3 +53,20 @@ def get_videos_by_user(user_id: int):
         )
 
         return session.exec(statement).all()
+
+
+def update_video_description(video_id: int, description: str):
+    engine = connect_music_db()
+
+    with Session(engine) as session:
+        video = session.get(Video, video_id)
+
+        if video is None:
+            return None
+
+        video.description = description
+        session.add(video)
+        session.commit()
+        session.refresh(video)
+
+        return video

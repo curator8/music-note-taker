@@ -3,6 +3,7 @@
 interface VideoProps {
   propTitle: string;
   propFilePath: string;
+  propDescription?: string | null;
 }
 
 const API_BASE_URL =
@@ -20,15 +21,24 @@ const getVideoUrl = (filePath: string) => {
   return `${API_BASE_URL}/video/${filePath}`;
 };
 
-export const Video = ({ propTitle, propFilePath }: VideoProps) => {
+export const Video = ({
+  propTitle,
+  propFilePath,
+  propDescription,
+}: VideoProps) => {
   const videoUrl = getVideoUrl(propFilePath);
+  const description = propDescription?.trim();
 
   return (
-    <>
+    <article>
       <h1>{propTitle}</h1>
       <video width="320" height="240" controls>
         <source src={videoUrl} type="video/mp4" />
       </video>
-    </>
+      <section>
+        <h2>Video Description</h2>
+        <p>{description || "No description has been added for this video."}</p>
+      </section>
+    </article>
   );
 };
