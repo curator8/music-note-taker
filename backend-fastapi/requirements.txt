@@ -1,9 +1,15 @@
 fastapi
 uvicorn
+python-multipart
+openai
 sqlmodel
 psycopg2-binary
+numpy
+scipy
+librosa
 faster-whisper
 opencv-python
 pillow
 torch
 transformers
+mediapipe
